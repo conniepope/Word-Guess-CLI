@@ -1,18 +1,28 @@
-// Dependency for inquirer npm package
-var inquirer = require("inquirer");
 
 // Is this line needed?
 var fs = require("fs")
 
-function Letter() {
-    stringValue: "letter";
-    letterGuessed: true;
-    
-}
+// Make a constructor, Letter.
+function Letter(stringValue, guessedYet) {
+// A string value to store the underlying character for the letter
+    this.stringValue = stringValue;
+    this.guessedYet = false;
 
-// Make a constructor, Letter. This constructor should be able to either display an underlying character or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter. That means the constructor should define:
+    this.guessReturn = function() {
+        if (guess === stringValue) {
+            this.guessedYet = true;
+            return this.stringValue;
+        } else {
+            this.guessedYet = false;
+            return "_"
+        }
+    }
+} 
+module.exports = Letter;
 
-//   * A string value to store the underlying character for the letter
+
+ //This constructor should be able to either display an underlying character or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter. That means the constructor should define:
+
 
 //   * A boolean value that stores whether that letter has been guessed yet
 
