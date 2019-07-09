@@ -1,6 +1,6 @@
 var Letter = require("./letter.js");
 
-// Make a constructor, Word that depends on the Letter constructor. This is used to create an object representing the current word the user is attempting to guess. That means the constructor should define:
+// Make a constructor, Word that depends on the Letter constructor. This is used to create an object representing the current word the user is attempting to guess. 
 function Word(lettersInWord) {
 // An array of `new` Letter objects representing the letters of the underlying word
     this.lettersInWord = lettersInWord;
@@ -13,14 +13,14 @@ function Word(lettersInWord) {
         }
     }
 
-//  A function that returns a string representing the word.   
+//  A function that returns a string representing the word. The DISPLAY. 
     this.wordRep = function() {
         var display = [];
 // Call the function on each letter object (the first function defined in `Letter.js`)...
         for (var i = 0; i <this.wordInPlay.length; i++){
             display.push(this.wordInPlay[i].guessReturn())
         }
-// that displays the character or an underscore and concatenate those together. 
+// that displays the character or an underscore and join together. 
         return display.join(" ");
     }
 

@@ -5,17 +5,14 @@ var Word = require("./word.js");
 var numGuessRemain = 10;
 var currentWord = "";
 var gameWord = "";
-//  Randomly selects a word and uses the `Word` constructor to store it
 var random = 0;
 var options = ["alphabet", "jitterbug", "bologna", "conducted", "dinosaur", "egotistical", "forensics", "imagination", "kilowatt"];
 
 
-// The logic for the course of the game
+// The logic for the game
 function playGame() {
-    // if (options.length < 2) {
-    //     options = ["alphabet", "jitterbug", "bologna", "conducted", "dinosaur", "egotistical", "forensics", "imagination", "kilowatt"];
-    // }
 
+//  Randomly selects a word from array of options
     random = Math.floor(Math.random()*options.length);
     currentWord = options[random];
     gameWord = new Word(currentWord);
@@ -24,7 +21,6 @@ function playGame() {
         options.splice(random, 1);
     }
 
-    // console.log(currentWord);
     console.log("");
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     console.log("You get 10 incorrect letter guesses to figure out the mystery word.");
@@ -36,6 +32,7 @@ function playGame() {
 function prompts() {
 
     if (numGuessRemain > 0) {
+// Displays the word / blanks
         console.log(gameWord.wordRep());
         console.log("")
     inquirer
@@ -65,9 +62,9 @@ function prompts() {
 function checkAnswer(data) {
 // check to see if only only one letter && if it is an alpha character
     if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
+// see if letter guessed matches any of letters in current word
         var temporary = gameWord.wordRep();
         gameWord.checkGuess(data.letter);
-        // console.log(data)
 
         if (temporary === gameWord.wordRep()) {
             numGuessRemain--;
@@ -81,6 +78,7 @@ function checkAnswer(data) {
         }
     }
     else {
+// if more than one letter chosen, or a non-alpha character
         console.log("");
         console.log("Please enter ONE LETTER at a time.")
         prompts();
@@ -91,6 +89,7 @@ function correctGuess() {
     console.log("");
     console.log("You guessed correctly!");
     console.log("");
+// replaces correct letters into the display
     if (currentWord.replace(/ /g,"") == (gameWord.wordRep()).replace(/ /g,"")) {
         console.log(gameWord.wordRep());
         console.log("");
