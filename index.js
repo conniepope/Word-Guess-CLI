@@ -6,8 +6,7 @@ var numGuessRemain = 10;
 var currentWord = "";
 var gameWord = "";
 var random = 0;
-var options = ["alphabet", "jitterbug", "bologna", "conducted", "dinosaur", "egotistical", "forensics", "imagination", "kilowatt"];
-
+var options = ["statue of liberty", "eiffel tower", "great wall of china", "taj mahal", "machu picchu", "leaning tower of pisa", "stonehenge", "easter island", "mount everest", "mount rushmore", "victoria falls", "the grand canyon", "golden gate bridge", "sydney opera house", "the colosseum", "empire state buidling", "the louvre", "rock of gibraltar", "hollywood sign", "the great pyramids", "hanging gardens of babylon" ];
 
 // The logic for the game
 function playGame() {
@@ -23,6 +22,7 @@ function playGame() {
 
     console.log("");
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log("The theme is 'Famous Landmarks Around the World'")
     console.log("You get 10 incorrect letter guesses to figure out the mystery word.");
     console.log("");
     prompts();
