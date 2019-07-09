@@ -7,7 +7,7 @@ function Word(lettersInWord) {
     this.wordInPlay = [];
 // Make the word...
     this.wordSplit = function() {
-        for (var i = 0; i <lettersInWord.length; i++){
+        for (var i = 0; i <this.lettersInWord.length; i++){
             var character = new Letter(lettersInWord[i]);
             this.wordInPlay.push(character);
         }

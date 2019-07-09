@@ -24,8 +24,11 @@ function playGame() {
         options.splice(random, 1);
     }
 
-    console.log(currentWord);
-    console.log("You get to guess 10 letters to figure out the mystery word")
+    // console.log(currentWord);
+    console.log("");
+    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log("You get 10 incorrect letter guesses to figure out the mystery word.");
+    console.log("");
     prompts();
 }
 
@@ -33,6 +36,8 @@ function playGame() {
 function prompts() {
 
     if (numGuessRemain > 0) {
+        console.log(gameWord.wordRep());
+        console.log("")
     inquirer
         .prompt([
             {
@@ -41,12 +46,14 @@ function prompts() {
                 type: "input"
             }   
         ])
-        .then(function(guess) {
-            checkAnswer(guess);
+        .then(function(data) {
+            checkAnswer(data);
         });
     }
     else {
-        console.log(`Sorry, you are out of guesses. The correct answer is ${currentWord}`)
+        console.log("");
+        console.log(`Sorry, you are out of guesses. The correct answer is ${currentWord}`);
+        console.log("");
         numGuessRemain = 10;
         currentWord = "";
         gameWord = "";
@@ -55,13 +62,18 @@ function prompts() {
     }
 }
 
-function checkAnswer(guess) {
+function checkAnswer(data) {
 // check to see if only only one letter && if it is an alpha character
-    if (guess.letter.length === 1 && /^[a-zA-Z]/.text(guess.letter)) {
+    if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
         var temporary = gameWord.wordRep();
+        gameWord.checkGuess(data.letter);
+        // console.log(data)
+
         if (temporary === gameWord.wordRep()) {
             numGuessRemain--;
+            console.log("");
             console.log(`Sorry, wrong letter! You have ${numGuessRemain} guesses remaining`)
+            console.log("");
             prompts();
         }
         else {
@@ -69,16 +81,20 @@ function checkAnswer(guess) {
         }
     }
     else {
+        console.log("");
         console.log("Please enter ONE LETTER at a time.")
         prompts();
     }
 }
 
 function correctGuess() {
+    console.log("");
     console.log("You guessed correctly!");
+    console.log("");
     if (currentWord.replace(/ /g,"") == (gameWord.wordRep()).replace(/ /g,"")) {
         console.log(gameWord.wordRep());
-        console.log("You WIN!");
+        console.log("");
+        console.log("YOU WIN!!!!!");
         currentWord = "";
         gameWord = "";
         numGuessRemain = 10;

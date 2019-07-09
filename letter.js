@@ -9,17 +9,16 @@ function Letter(stringValue) {
     this.guessReturn = function() {
 // that returns the underlying character if the letter has been guessed,
         if (this.stringValue === " ") {
-            this.guessedYet = true;
             return " ";
-        } else {
+        } else if (!this.guessedYet)  {
 //or an underscore if the letter has not been guessed.
-            if(this.guessedYet === false) {
             return "_";
-            } else {
+        } 
+            else {
                 return this.stringValue;
-            }
         }
-    } 
+    }
+ 
 //  A function that takes a character as an argument...
     this.check = function(guess) {
 // and checks it against the underlying character,
