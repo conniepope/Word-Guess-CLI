@@ -10,3 +10,14 @@ Theme: Famous Landmarks Around the World
 
 ![image](https://user-images.githubusercontent.com/47279070/60920768-fa3a4f00-a266-11e9-8b3c-fc2c50cad556.png)
 
+Installation
+Install and run with NPM. Simply open your terminal and type the following commands:
+
+$ git clone https://www.github.com/conniepope/word-guess-cli.git
+$ cd word-guess-cli
+$ npm install
+
+Then, start the game with:
+
+$ node index.js
+
