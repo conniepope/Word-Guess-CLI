@@ -22,5 +22,6 @@ Install and run with NPM. Simply open your terminal and type the following comma
 
 
 Then, start the game with:
+
   $ node index.js
 
